@@ -12,7 +12,4 @@ fun main(args: Array<String>) {
     else if (args.size == 1) {
         val rolluser = rollDie(args[0].toInt())
     }
-    //val roll1 = rollDie(6)
-    //val roll2 = rollDie(20)
-    //val roll3 = rollDie(7)
 }
