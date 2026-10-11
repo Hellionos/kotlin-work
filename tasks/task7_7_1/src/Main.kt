@@ -4,6 +4,6 @@ import kotlin.io.path.Path
 import kotlin.io.path.readText
 
 fun main(args: Array<String>) {
-    println(med(readData(args[0])))
+    displaystats((readData(args[0])))
 
 }
