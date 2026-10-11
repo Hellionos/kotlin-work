@@ -1,30 +1,24 @@
 // Task 7.7.1: statistics functions
 
-fun med(numbers: List): Double {
-    if (numbers % 2 == 0) {
-        val len = numbers.length
+fun med(numbers: List<Float>): Double {
+    val len = numbers.size
+    val sorted = numbers.sorted()
+    if (len % 2 == 0) {
         val midpoint = len/2
+        val num2 = sorted[midpoint]
+        val num1 = sorted[midpoint-1]
+        val med = ((num1 + num2)/2).toDouble()
 
-        val num2 = numbers[midpoint]
-        val num1 = numbers[midpoint-1]
-        val med = (num1 + num2)/2
-        val min = numbers.min()
-        val max = numbers.max()
-        val sum = numbers.sum()
-        val mean = sum/len
-
-        return med; mean; max; min
+        return med
     }
-    val len = numbers.length
-    val midpoint = (len/2) - 0.5
-    val med = (numbers[midpoint]).toDouble()
-    val min = numbers.min()
-    val max = numbers.max()
-    val sum = numbers.sum()
-    val mean = sum/len
-    return med; mean; max; min
+    val midpoint = (len/2)
+    val med = (sorted[midpoint]).toDouble()
+    return med
 }
 
-//fun otherstats(numbers: List): Double {
-
-//}
+fun displaystats(numbers: List<Float>) {
+    println("Median: ${med(numbers)}")
+    println("Mean: ${numbers.average()}")
+    println("Max: ${numbers.maxOrNull()}")
+    println("Min : ${numbers.minOrNull()}")
+}
