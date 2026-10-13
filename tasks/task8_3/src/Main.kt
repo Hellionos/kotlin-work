@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
     println(highest)
     val average = dataset.sumOf{ it.second } / dataset.size
     //println(averageTemp(dataset))
-    println(average)
+    println("%.2f".format(average))
    
 }
 
