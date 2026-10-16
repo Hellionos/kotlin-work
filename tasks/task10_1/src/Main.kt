@@ -19,4 +19,5 @@ fun main(args: Array<String>) {
 
     println(result)
     //display(result)
+    //display dosn't work with the nullable string in this case
 }
