@@ -9,3 +9,4 @@ fun today(zone: TimeZone = TimeZone.currentSystemDefault()): LocalDate {
     val now = Clock.System.now()
     return now.toLocalDateTime(zone).date
 }
+
