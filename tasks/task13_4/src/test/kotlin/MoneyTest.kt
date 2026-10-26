@@ -4,8 +4,24 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.assertions.withClue
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
+//import io.kotest.matchers.comparables.shouldBeGreaterThanOrEqualTo
 
 @Suppress("unused")
 class MoneyTest : FreeSpec({
-    // Write your unit tests here
+    
+    "Can create a Money" {
+        val m = Money(1, 50)
+        withClue("euros") {m.euros shouldBe 1 }
+        withClue("cents") {m.cents shouldBe 50 }
+    }
+    "Can create a different Money" {
+        val m = Money(2, 99)
+        withClue("euros") { m.euros shouldBe 2 }
+        withClue("cents") { m.cents shouldBe 99 }
+    }
+    "Cannot create a Money with negative value for euros" {
+        shouldThrow<IllegalArgumentException> {
+            val m = Money(-3, 20)
+        }
+    }
 })
