@@ -5,3 +5,4 @@ fun main() {
     println(student.name)
     println(student.degree)
 }
+
