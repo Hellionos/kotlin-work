@@ -2,6 +2,7 @@
 // StudentAccount class
 
 package comp2850.banking
+const val MAX_OVERDRAFT = 100
 
 class StudentAccount(holder: String, _overdraft: Int=0): BankAccount(holder) {
 
@@ -12,13 +13,6 @@ class StudentAccount(holder: String, _overdraft: Int=0): BankAccount(holder) {
         }
         field = value
         }
-
-    //init {
-    //    require(overdraft >= 0 && overdraft <= 100) {
-    //        throw IllegalArgumentException("Overdraft cannot be less than 0 or more than 100")
-    //    }
-    //    require(balance > (overdraft*-1)) {"Balance is not allowed to go lower than the overdraft."}
-    //}
 
     override fun withdraw(amount: Int) {
         require(amount > 0) { 
