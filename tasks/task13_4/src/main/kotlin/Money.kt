@@ -9,7 +9,7 @@ data class Money(val euros: Int, val cents: Int) {
             throw IllegalArgumentException("Cents can't be negative")
         }
         require(cents <= 99) {
-            throw IllegalArgumentException("Cents cn't be greater than 99")
+            throw IllegalArgumentException("Cents can't be greater than 99")
         }
     }
     operator fun plus(other: Money) =
@@ -17,10 +17,26 @@ data class Money(val euros: Int, val cents: Int) {
         euros + other.euros + (cents + other.cents) / 100,
         (cents + other.cents) % 100
     )
+
+    operator fun minus(other: Money) =
+        if (cents >= other.cents) {
+            Money(
+                euros - other.euros,
+                cents - other.cents
+            )
+        } else {
+            Money(
+                euros - other.euros -1,
+                cents + 100 -other.cents
+            )
+        }
+
     override fun toString() = "(€$euros.$cent)"
     }
 
 fun main() {
-    val m = Money(5,40)
-    println(m)
+    val m1 = Money(5,40)
+    val m2 = Money(2,70)
+    val mplusm = m1.plus(m2)
+    println(m1)
 }
