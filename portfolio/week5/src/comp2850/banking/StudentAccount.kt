@@ -3,14 +3,22 @@
 
 package comp2850.banking
 
-class StudentAccount(var overdraft: Int=0): BankAccount(holder) {
-    init {
-        require(overdraft >= 0 && overdraft <= 100) {
+class StudentAccount(holder: String, _overdraft: Int=0): BankAccount(holder) {
+
+    var overdraft: Int = _overdraft
+        set(value) {
+            require(value >= 0 && value <= 100) {
             throw IllegalArgumentException("Overdraft cannot be less than 0 or more than 100")
         }
-        require(balance > (overdraft*-1)) {"Balance is not allowed to go lower than the overdraft."}
-    }
+        field = value
+        }
 
+    //init {
+    //    require(overdraft >= 0 && overdraft <= 100) {
+    //        throw IllegalArgumentException("Overdraft cannot be less than 0 or more than 100")
+    //    }
+    //    require(balance > (overdraft*-1)) {"Balance is not allowed to go lower than the overdraft."}
+    //}
 
     override fun withdraw(amount: Int) {
         require(amount > 0) { 
@@ -21,8 +29,9 @@ class StudentAccount(var overdraft: Int=0): BankAccount(holder) {
         }
         balance -= amount
         }
-    fun withdrawsAllowed(): Boolean {
 
+    fun withdrawalsAllowed(): Boolean {
+        return balance > -overdraft
     }
 
     override fun toString(): String = "Account for $holder, balance = $balance (overdraft = $overdraft)"
